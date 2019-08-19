@@ -1,0 +1,77 @@
+<?php
+require ('config.php');
+	
+	$query = 'SELECT * 
+		FROM maintenance
+		ORDER BY maintenance_id';
+	$statement = $db->prepare($query);
+	$statement->execute();
+	$maintenance_array = $statement->fetchAll();
+	$statement->closeCursor();
+?>
+<!DOCTYPE html>
+<html>
+<!-- the head section -->
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content"IE=edge">
+	<meta name="viewport" content="width" = device_width, initial-scale =1>
+
+	<title>Maintenance</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+
+</head>
+
+<!-- the body section -->
+<body class ="container">
+	<?php include "header_navigation.php";?>
+	<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover" style = overflow-x:auto;>
+        <thead>
+	    <tr>
+	    <td colspan="4">Maintenance Records</td>
+	    </tr>
+    	</thead>
+        <tr>
+	  		<th class="col-md-2">Maintenance Id</th>
+			<th class="col-md-2">Maintenance_Type Id</th>
+			<th class="col-md-2">Vehicle Id</th>
+			<th class="col-md-2">Vendor</th>
+			<th class="col-md-2">Description</th>
+			<th class="col-md-2">Vendor Address</th>
+			<th class="col-md-2">Cost</th>
+			<th class="col-md-2">Mileage</th>
+			<th class="col-md-2">Date</th>
+			<th class="col-md-2">Date Modified</th>
+			<th class="col-md-2">Vendor Phone Number</th>
+			<th class="col-md-2">
+		<form method= "GET" action="maintenance_add_form.php">
+			<button type="SUBMIT">Add Record</button>
+		</form>
+	</th>
+        </tr>        
+        <?php foreach ($maintenance_array as $maintenance) : ?>
+        <tr>
+        	<td><?php echo $maintenance['maintenance_id']; ?></td><br>
+			<td><?php echo $maintenance['maintenance_type_id']; ?></td><br>
+			<td><?php echo $maintenance['vehicle_id']; ?></td><br>
+			<td><?php echo $maintenance['maintenance_vendor']; ?></td><br>
+			<td><?php echo $maintenance['maintenance_description']; ?></td><br>
+			<td><?php echo $maintenance['maintenance_vendor_address']; ?></td><br>
+			<td><?php echo $maintenance['maintenance_cost']; ?></td><br>
+			<td><?php echo $maintenance['maintenance_mileage']; ?></td><br>
+			<td><?php echo $maintenance['maintenance_date']; ?></td><br>
+			<td><?php echo $maintenance['maintenance_date_modified']; ?></td><br>
+			<td><?php echo $maintenance['maintenance_vendor_phone_number']; ?></td><br>
+			<td><?php include "maintenance_edit_button.php"; ?></td>
+        </tr>
+        <?php endforeach; ?>    
+    </table>
+	</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<?php
+session_start();
+require('config.php');
+
+// $search_string = $_POST['search_string'];
+$search_category = filter_input(INPUT_POST, 'search_category');
+$search_string = $_SESSION['search_string'];
+
+
+//echo "Search Category:  $search_category<br>";
+//echo "Search String:  $search_string";
+
+
+$query = 'SELECT * from drivers 
+	WHERE first_name LIKE :search_string
+	OR last_name LIKE :search_string
+	OR driver_password LIKE :search_string
+	OR email LIKE :search_string
+	OR phone_number LIKE :search_string
+	OR driver_role LIKE :search_string 
+	OR date_created LIKE :search_string  
+	ORDER BY first_name ASC';
+	$statement1 = $db->prepare($query);
+	$search_string = "%".$search_string."%";
+	$statement1->bindValue(':search_string', $search_string);
+	$statement1->execute();
+	$drivers = $statement1->fetchAll();
+	$statement1->closeCursor();
+?>
+<div class="container">
+<?php include("header_navigation.php"); ?>
+<div class="container">
+<h3>Search Results</h3>
+</div>
+<br />
+
+<?php include("table_format.php");?>
+        <thead>
+            <tr>
+                <td colspan="15"><h3><b>Driver Search Results</b></h3></td>
+            </tr>
+        </thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th colspan="2">
+                <form method="GET" action="add_driver_form.php">
+                    <button type="SUBMIT">Add Record</button>
+                </form>
+            </th>
+        </tr>
+      		
+
+<?php foreach ($drivers as $driver) : ?> 
+
+    
+            <tr>
+		<td><?php echo $driver['first_name']; ?></td>
+		<td><?php echo $driver['last_name']; ?></td>				
+		<td><?php echo $driver['driver_password']; ?></td>
+		<td><?php echo $driver['email']; ?></td>
+		<td><?php echo $driver['phone_number']; ?></td>
+		<td><?php include "driver_edit_button.php"; ?></td>
+	   </tr>
+<?php endforeach; ?>
+    </table>
+
+    <a href="search.php" style: text-decoration: none;><h4><b>Search Again?</b></h4></a>
+
+
+<?php include "footer.php"; ?>
+
+</div> <!-- Close container div -->
+</body>
+</html>

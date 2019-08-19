@@ -1,0 +1,20 @@
+<?php
+require('config.php');
+
+// Retrieve information from _POST array
+$fuel_id = filter_input(INPUT_POST, 'fuel_id');
+
+// DELETE query to remove a record from the database
+
+$query = 'DELETE FROM fuel WHERE fuel_id = :fuel_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':fuel_id', $fuel_id);
+    $statement->execute();
+    $statement->closeCursor();
+
+// Redirects User to the fuels page
+
+	header("Location:fuels.php"); 
+	exit;
+
+?>

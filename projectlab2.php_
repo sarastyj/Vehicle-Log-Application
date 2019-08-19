@@ -1,0 +1,56 @@
+<?php
+require ('./config.php');
+	
+	$query = 'SELECT * 
+		FROM drivers
+		ORDER BY first_name';
+	$statement = $db->prepare($query);
+	$statement->execute();
+	$drivers = $statement->fetchAll();
+	$statement->closeCursor();
+?>
+<!DOCTYPE html>
+<html>
+<!-- the head section -->
+<head>
+    <title>Vehicle Log</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<!-- the body section -->
+<body>
+<header><h1>Vehicle Log</h1></header>
+<main>
+    <h2>Drivers</h2>
+    <table>
+        <tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Password</th>
+		<th>Email</th>
+		<th>Role</th>
+		<th>Date Created</th>
+		<th>Date Last Login</th>
+		<th>Date Modified</th>
+		<th>Phone Number</th>
+        </tr>        
+        <?php foreach ($drivers as $driver) : ?>
+        <tr>
+            	<td><?php echo $driver['first_name']; ?></td>
+            	<td><?php echo $driver['last_name']; ?></td>
+		<td><?php echo $driver['driver_password']; ?></td>
+		<td><?php echo $driver['email']; ?></td>
+            	<td><?php echo $driver['driver_role']; ?></td>
+		<td><?php echo $driver['date_created']; ?></td>
+		<td><?php echo $driver['date_lastlogin']; ?></td>
+            	<td><?php echo $driver['date_modified']; ?></td>
+		<td><?php echo $driver['phone_number']; ?></td>
+        </tr>
+        <?php endforeach; ?>    
+    </table>
+
+	<p><a href="add_driver_form.php">Add Driver</a></p>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content "IE=edge">
+        <meta name="viewport" content="width"=device_width, initial-scale=1>
+
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    </head>
+
+    <body>
+<div class="container">
+<div class="container-fluid"style = background-color:#0099ff;>
+
+<header style = color:#FFFFFF;><h1><b>Vehicle Log Application</b></h1></header>
+<nav>
+	<ul>
+		<li><a href="index.php">Home</a></li>
+		<li><a href="drivers.php">Drivers</a></li>
+		<li><a href="vehicles.php">Vehicles</a><br></li>		
+		<li><a href="maintenance.php">Maintenance</a></li>
+		<li><a href="fuel.php">Fuel</a></li>
+		<li><a href="search.php">Search</a></li>
+		<li><a href="about.php">About</a></li>
+		<li class="navbar-right"><a href="admin/index.php"><b>Log in as Admin</b></a></li>
+	</ul>
+</nav>
+
+</div>
+</div>

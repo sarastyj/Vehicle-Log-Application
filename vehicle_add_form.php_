@@ -1,0 +1,60 @@
+<?php include "header_navigation.php";?>
+            <div class="table-responsive">
+            <?php include "table_format.php";?>
+                    <thead>
+                        <tr>
+                            <td colspan="15"><h3><b>Add Vehicles</b></h3></td>
+                        </tr>
+                    </thead>
+                    <form action="vehicle_add.php" method="post">
+                    <tr>
+                    <td align="right"><strong>Make:</strong></td>
+                    <td><input type="text" name="vehicle_make" placeholder = 'Honda'></td>
+                    </tr>
+                    <tr>
+                    <td align="right"><strong>Model:</strong></td>
+                    <td><input type="text" name="vehicle_model" placeholder = 'Civic'></td>
+                    </tr>
+                    <tr>
+                    <td align="right"><strong>Year:</strong></td>
+                    <td><input type="text" name="vehicle_year" placeholder = '2005'></td>
+                    </tr>
+                    <tr>
+                    <td align="right"><strong>Color:</strong></td>
+                    <td><input type="text" name="vehicle_color" placeholder = 'Black'></td>
+                    </tr>
+                    <tr>
+                    <td align="right"><strong>Year Purchased:</strong></td>
+                    <td><input type="text" name="vehicle_year_purchased" placeholder = '2008'></td>
+                    </tr>
+                    <tr>
+                    <td align="right"><strong>VIN:</strong></td>
+                    <td><input type="text" name="vehicle_vin" placeholder = 'GHTG12345HD57890'></td>
+                    </tr>
+                    <tr>
+                    <td align="right"><strong>License Tag:</strong></td>
+                    <td><input type="text" name="vehicle_license_tag" placeholder = 'TKG289' ></td>
+                    </tr>
+                    <tr>
+                    <td align="right"><strong>License State:</strong></td>
+                    <td><input type="text" name="vehicle_license_state" placeholder = 'SC' ></td>
+                    </tr>
+                    <tr>
+                    <td align="right"><strong>Purchase Price:</strong></td>
+                    <td><input type="text" name="vehicle_purchase_price" placeholder = '3500'></td>
+                    </tr>
+                    <tr>
+                    <td align="right"><strong>Purchase Mileage:</td>
+                    <td><input type="text" name="vehicle_purchase_mileage" placeholder = '123989'></td>
+                    </tr>
+                    <td align="center" colspan="2"><input type="submit" value="Submit"><br></td>
+            </table>
+                   
+
+        </form>
+    </div>
+    <?php include "footer.php"; ?>
+</div>
+
+</body>
+</html>

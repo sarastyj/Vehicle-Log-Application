@@ -1,0 +1,62 @@
+<?php
+require ('./config.php');
+?>
+<!--
+	
+	$query = 'SHOW TABLES';
+	$statement = $db->prepare($query);
+	$statement->execute();
+	$tables = $statement->fetchAll();
+	$statement->closeCursor();
+ -->
+<!DOCTYPE html>
+<html>
+<!-- the head section -->
+<head>
+    <title>Data Entry Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<!-- the body section -->
+<body>
+<header><h1>Data Entry</h1></header>
+<main>
+    	<p> Select a Table to Add Information to...</p><br>
+	<table>
+		<tr>
+			<th><a href="add_driver_form.php">Drivers</a></th>
+			<th><a href="add_vehicles_form.php">Vehicles</a><br></th>
+        	</tr>        
+        
+        <tr>
+            	
+        </tr>
+	</table>	
+
+	<!--<form action="edit.php" method="post"
+              id="projectlab3.php">
+
+            <label>Tables:</label>
+            <select name="Tables">
+          	<option value="drivers">Drivers</option>
+		<option value="fuel">Fuel</option>
+		<option value="maintenance">Maintenance</option>
+		<option value="maintenance_type">Maintenance Type</option>
+		<option value="vehicles">Vehicles</option>
+            </select><br>
+
+            <label>Data Entry Type:</label>
+            <select name="insert">
+		<option value = "insert">Insert</option>
+	    </select><br>
+
+            
+
+            <label>&nbsp;</label>
+            <input type="submit" value="Submit"><br>
+        </form>-->
+	
+
+</main>
+</body>
+</html>

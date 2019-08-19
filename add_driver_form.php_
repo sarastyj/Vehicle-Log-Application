@@ -1,0 +1,59 @@
+<?php
+require('./config.php');
+$query = 'SELECT *
+          FROM drivers
+          ORDER BY driver_id';
+$statement = $db->prepare($query);
+$statement->execute();
+$drivers = $statement->fetchAll();
+$statement->closeCursor();
+?>
+<!DOCTYPE html>
+<html>
+
+<!-- the head section -->
+<head>
+    <title>Add Driver Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<!-- the body section -->
+<body>
+    <header><h1>Vehicle Log</h1></header>
+
+    <main>
+        <h2>Add Driver</h2>
+        <form action="add_driver.php" method="post">
+
+            <label>First Name:</label>
+            <input type="text" name="first_name" 
+		value="<?php echo htmlspecialchars($first_name); ?>"><br>
+
+            <label>Last Name:</label>
+            <input type="text" name="last_name"
+		value="<?php echo htmlspecialchars($last_name); ?>"><br>
+
+            <label>Password:</label>
+            <input type="text" name="driver_password"
+		value="<?php echo htmlspecialchars($driver_password); ?>"><br>
+	
+	    <label>Email:</label>
+            <input type="text" name="email"
+		value="<?php echo htmlspecialchars($email); ?>"><br>
+
+            <label>Driver Role:</label>
+            <input type="text" name="driver_role"
+		value="<?php echo htmlspecialchars($driver_role); ?>"><br>
+
+            <label>&nbsp;</label>
+            <input type="submit" value="Add Driver"
+		value="<?php echo htmlspecialchars($first_name); ?>"><br><br>
+        </form>
+       
+    </main>
+
+    <footer>
+        <p>&copy; <?php echo date("Y"); ?> Vehicle Log.</p>
+    </footer>
+</body>
+</html>

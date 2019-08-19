@@ -1,0 +1,92 @@
+<?php
+require ('config.php');
+	
+	$query = 'SELECT * 
+		FROM vehicles
+		ORDER BY vehicle_make';
+	$statement = $db->prepare($query);
+	$statement->execute();
+	$vehicles = $statement->fetchAll();
+	$statement->closeCursor();
+?>
+
+<!-- the head section -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- the head section -->
+<head>
+
+<!-- Next three lines needed to make this a responsive app in most modern browsers -->
+<!-- The variables $app_URL and $app_name are set in the config.php file -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- <base href="localhost/vehicle_log/" /> -->
+<eta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- ADD BOOTSTRAP 3.3.7 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>Vehicles</title>
+
+</head>
+
+<!-- the body section -->
+<body>
+
+<?php include "header_navigation.php";?>
+
+<div class="container">
+
+<div class="table-responsive">
+
+<h1>Vehicles List</h1>
+
+
+<table class="table table-bordered table-striped table-hover" style = overflow-x:auto;>
+
+<tr>
+<th>Make</th>
+<th>Model</th>
+<th>Year</th>
+<th>Color</th>
+<th>Year Purchased</th>
+<th>VIN</th>
+<th>License Tag</th>
+<th>License State</th>
+<th>Purchase Price</th>
+<th>Purchase Mileage</th>
+<th>
+<form method= "GET" action="vehicle_add_form.php">
+<button type="SUBMIT">Add Record</button>
+</form>
+</th>		
+</tr>
+
+<?php foreach ($vehicles as $vehicle) : ?>
+<tr>
+<td><?php echo $vehicle['vehicle_make']; ?></td>
+<td><?php echo $vehicle['vehicle_model']; ?></td>
+<td><?php echo $vehicle['vehicle_year']; ?></td>
+<td><?php echo $vehicle['vehicle_color']; ?></td>
+<td><?php echo $vehicle['vehicle_year_purchased']; ?></td>
+<td><?php echo $vehicle['vehicle_vin']; ?></td>
+<td><?php echo $vehicle['vehicle_license_tag']; ?></td>
+<td><?php echo $vehicle['vehicle_license_state']; ?></td>
+<td><?php echo $vehicle['vehicle_purchase_price']; ?></td>
+<td><?php echo $vehicle['vehicle_purchase_mileage']; ?></td>
+<td><?php include "vehicle_edit_button.php"; ?></td>
+</tr>
+<?php endforeach; ?>  
+
+
+</table>
+
+
+</div> <!-- Close table-responsive div --> 
+</div> <!-- Close container div -->
+
+</body>
+</html>
